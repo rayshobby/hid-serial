@@ -1,0 +1,13 @@
+ATmega328p      x1 (either DIP or SMT package)
+MCP1700-33      x1 3.3V linear regulator
+10uF cap        x2
+0.1uf cap       x2
+47 ohm resistor x2
+1.5k   resistor x1
+10k    resistor x1
+12MHz crystal   x1 (or resonator)
+18pf cap        x2 (cap for crystal. not needed if you use resonator)
+button          x1 (for bootloading)
+USB cable or connector x1
+
+(optional) MCP9700 temperature sensor or any other analog sensor for testing.
