@@ -1,3 +1,9 @@
+=============
+Dec 16 Update
+
+- Fixed issue of host software printing garbage after running for a while
+=============
+
 This folder contains the host software (HIDSerialMonitor)
 for HID-class serial communication. The precompiled programs
 for Linux, Mac, and Windows can be found in their
