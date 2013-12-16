@@ -10,6 +10,7 @@ import com.codeminders.hidapi.HIDDevice;
 import java.io.IOException; 
 import java.util.List; 
 import java.util.ArrayList; 
+import java.util.LinkedList; 
 import java.awt.Font; 
 
 import java.util.HashMap; 
@@ -22,6 +23,8 @@ import java.io.OutputStream;
 import java.io.IOException; 
 
 public class HIDSerialMonitor extends PApplet {
+
+
 
 
 
@@ -85,6 +88,11 @@ public void draw() {
   if( device != null && !paused ) {
     String result = deviceRead();  
     if( result != null ) {
+      
+      if(outputField.stext.getNbrLines() > 100){
+                int loc = outputField.stext.getPlainText().indexOf("\n",1);
+                outputField.stext.deleteCharacters(0,loc);
+      }
       outputField.appendText(result);
     }
   }
@@ -142,7 +150,7 @@ public HIDDeviceInfo[] deviceFindAllDescriptors() {
 public String deviceRead() {
   try {
     device.disableBlocking();
-    byte[] data = new byte[8];
+    byte[] data = new byte[10];
     int read = device.read(data);
     if (read > 0) {
       String str = new String();
@@ -187,7 +195,13 @@ public void handleButtonEvents(GButton button, GEvent event) {
       if (device!=null) {
         pauseButton.setEnabled(false);
         sendButton.setEnabled(false);
+        try{
+          device.close();
+        } catch (IOException ioe) {
+          ioe.printStackTrace();
+        }
         device = null;
+        outputField = new GTextArea(this, 0, 100, 405, 400, G4P.SCROLLBARS_VERTICAL_ONLY);
         connectButton.setText("Connect");
         connectButton.setTextBold();
         outputField.appendText("Disconnected.\n");

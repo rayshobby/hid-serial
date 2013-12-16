@@ -3,6 +3,8 @@
 NOTE: the original code by Frank Zhao has been slightly modified to use
 button on pin PD4 for bootloading condition.
 
+Please check the burn.bat for recommende fuse bits.
+
 ==========================================================================
 
 bootloader files for USnooBie, base off USBaspLoader
