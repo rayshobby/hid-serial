@@ -162,7 +162,7 @@ size_t HIDSerial::write8(const uint8_t *buffer, size_t size)
   for(i=0;i<size && i<8; i++) {
     outBuffer[i] = buffer[i];
   }
-  usbSetInterrupt(outBuffer, 8);
+  usbSetInterrupt(outBuffer, i);
   return (i);
 }
 
